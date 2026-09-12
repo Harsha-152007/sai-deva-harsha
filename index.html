@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Portfolio of Sai Deva Harsha, an aspiring web developer from Tenali, Andhra Pradesh.">
+
+    <title>Sai Deva Harsha | Web Developer</title>
+
+    <style>
+        /* =========================
+           BASIC RESET
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #111111;
+            line-height: 1.7;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #dddddd;
+            z-index: 1000;
+        }
+
+        .navbar {
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            font-weight: 400;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 15px;
+            font-weight: 600;
+            position: relative;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: #111111;
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 75px;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .small-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 90px);
+            line-height: 1;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+        }
+
+        .hero h2 {
+            font-size: 25px;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            max-width: 700px;
+            font-size: 18px;
+            color: #555555;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 25px;
+            border: 2px solid #111111;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #111111;
+            color: #ffffff;
+        }
+
+        .button.dark {
+            background: #111111;
+            color: #ffffff;
+        }
+
+        .button.dark:hover {
+            background: #ffffff;
+            color: #111111;
+        }
+
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================== */
+
+        section {
+            padding: 110px 0;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .section-number {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #777777;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 45px;
+            letter-spacing: -1px;
+            margin-bottom: 45px;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .about-text {
+            font-size: 18px;
+            color: #444444;
+        }
+
+        .about-text strong {
+            color: #111111;
+        }
+
+        .details {
+            border-top: 2px solid #111111;
+        }
+
+        .detail {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 17px 0;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .detail strong {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail span {
+            color: #555555;
+            text-align: right;
+        }
+
+
+        /* =========================
+           SKILLS
+        ========================== */
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            border-top: 2px solid #111111;
+        }
+
+        .skill {
+            padding: 25px;
+            border-bottom: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .skill:nth-child(even) {
+            border-right: none;
+        }
+
+        .skill span {
+            display: block;
+            font-size: 13px;
+            color: #777777;
+            font-weight: 400;
+            margin-top: 5px;
+        }
+
+
+        /* =========================
+           EDUCATION
+        ========================== */
+
+        .education {
+            border-left: 3px solid #111111;
+            padding-left: 30px;
+        }
+
+        .education h3 {
+            font-size: 27px;
+            margin-bottom: 5px;
+        }
+
+        .education p {
+            color: #555555;
+        }
+
+
+        /* =========================
+           PROJECTS
+        ========================== */
+
+        .project-card {
+            border: 1px solid #cccccc;
+            padding: 40px;
+            max-width: 750px;
+        }
+
+        .project-number {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #777777;
+        }
+
+        .project-card h3 {
+            font-size: 30px;
+            margin: 15px 0;
+        }
+
+        .project-card p {
+            color: #000000;
+        }
+
+        .coming-soon {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 15px;
+            border: 1px solid #111111;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-intro {
+            font-size: 20px;
+            color: #444444;
+        }
+
+        .contact-details {
+            border-top: 2px solid #111111;
+        }
+
+        .contact-item {
+            padding: 18px 0;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .contact-item small {
+            display: block;
+            color: #777777;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            font-size: 14px;
+            color: #666666;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        @media (max-width: 750px) {
+
+            .navbar {
+                height: auto;
+                padding: 20px 0;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding-top: 150px;
+                min-height: auto;
+                padding-bottom: 100px;
+            }
+
+            .hero h1 {
+                font-size: 52px;
+                letter-spacing: -2px;
+            }
+
+            .hero h2 {
+                font-size: 21px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .skill {
+                border-right: none;
+            }
+
+            .section-title {
+                font-size: 38px;
+            }
+
+            .detail {
+                flex-direction: column;
+                gap: 3px;
+            }
+
+            .detail span {
+                text-align: left;
+            }
+
+            .project-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+        <div class="container navbar">
+
+            <a href="#home" class="logo">
+               <span>
+                <B>
+                    <U>
+                        <MARK>HARSHA'S PORTFOLIO</MARK>
+                    </U>
+
+
+                </B>
+
+               </span>
+            </a>
+
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#education">Education</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- =========================
+             HOME
+        ========================== -->
+
+        <section class="hero" id="home">
+
+            <div class="container">
+
+                <div class="hero-content">
+
+                    <div class="small-title">
+                        Portfolio / 2026
+                    </div>
+
+                    <h1>
+                        Sai Deva Harsha
+                    </h1>
+
+                    <h2>
+                        Aspiring Web Developer
+                    </h2>
+
+                    <p>
+                        I’m a passionate web developer who enjoys creating
+                        modern, responsive, and user-friendly websites.
+                        I’m interested in technology, design, and building
+                        projects that solve real-world problems.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="#contact" class="button dark">
+                            Contact Me
+                        </a>
+
+                        <a href="#about" class="button">
+                            Explore Portfolio
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
+
+        <section id="about">
+
+            <div class="container">
+
+                <div class="section-number">
+                    01 — ABOUT
+                </div>
+
+                <h2 class="section-title">
+                    About Me
+                </h2>
+
+                <div class="about-grid">
+
+                    <div class="about-text">
+
+                        <p>
+                            Hello! I’m <strong>Sai Deva Harsha</strong>,
+                            a student and aspiring web developer from
+                            Tenali, Andhra Pradesh.
+                        </p>
+
+                        <br>
+
+                        <p>
+                            I enjoy learning about technology, web
+                            development and design. My goal is to become
+                            a skilled web developer and create websites
+                            that are useful, simple and easy to use.
+                        </p>
+
+                    </div>
+
+
+                    <div class="details">
+
+                        <div class="detail">
+                            <strong>Name</strong>
+                            <span>Sai Deva Harsha</span>
+                        </div>
+
+                        <div class="detail">
+                            <strong>Goal</strong>
+                            <span>Web Developer</span>
+                        </div>
+
+                        <div class="detail">
+                            <strong>College</strong>
+                            <span>NRI Degree College</span>
+                        </div>
+
+                        <div class="detail">
+                            <strong>Location</strong>
+                            <span>Tenali, Andhra Pradesh</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             SKILLS
+        ========================== -->
+
+        <section id="skills">
+
+            <div class="container">
+
+                <div class="section-number">
+                    02 — SKILLS
+                </div>
+
+                <h2 class="section-title">
+                    What I Do
+                </h2>
+
+                <div class="skills">
+
+                    <div class="skill">
+                        Web Development
+                        <span>Learning and building for the web</span>
+                    </div>
+
+                    <div class="skill">
+                        Editing
+                        <span>Creative editing and visual work</span>
+                    </div>
+
+                    <div class="skill">
+                        Responsive Design
+                        <span>Websites that work across devices</span>
+                    </div>
+
+                    <div class="skill">
+                        Creative Design
+                        <span>Simple and user-friendly interfaces</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EDUCATION
+        ========================== -->
+
+        <section id="education">
+
+            <div class="container">
+
+                <div class="section-number">
+                    03 — EDUCATION
+                </div>
+
+                <h2 class="section-title">
+                    Education
+                </h2>
+
+                <div class="education">
+
+                    <h3>
+                        NRI Degree College
+                    </h3>
+
+                    <p>
+                        Currently pursuing my degree and developing
+                        my skills in technology and web development.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROJECTS
+        ========================== -->
+
+        <section id="projects">
+
+            <div class="container">
+
+                <div class="section-number">
+                    04 — PROJECTS
+                </div>
+
+                <h2 class="section-title">
+                    My Projects
+                </h2>
+
+                <div class="project-card">
+
+                    <div class="project-number">
+                        PROJECT 001
+                    </div>
+
+                    <h3>
+                        Coming Soon
+                    </h3>
+
+                    <p>
+                        I currently don't have projects to showcase.
+                        I am learning and preparing to build my first
+                        web development projects.
+                    </p>
+
+                    <div class="coming-soon">
+                        IN DEVELOPMENT
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section id="contact">
+
+            <div class="container">
+
+                <div class="section-number">
+                    05 — CONTACT
+                </div>
+
+                <h2 class="section-title">
+                    Let's Connect
+                </h2>
+
+                <div class="contact-grid">
+
+                    <div class="contact-intro">
+
+                        <p>
+                            Interested in connecting with me?
+                            Feel free to reach out through email
+                            or phone.
+                        </p>
+
+                    </div>
+
+
+                    <div class="contact-details">
+
+                        <div class="contact-item">
+
+                            <small>Email</small>
+
+                            <a href="mailto:mudraboinasaidevaharsha@gmail.com">
+                                mudraboinasaidevaharsha@gmail.com
+                            </a>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <small>Phone</small>
+
+                            <a href="tel:6304056039">
+                                6304056039
+                            </a>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <small>Location</small>
+
+                            <span>
+                                Tenali, Andhra Pradesh
+                            </span>
+
+                        </div>
+
+
+                        <div class="contact-item">
+
+                            <small>GitHub</small>
+
+                            <a href="https://github.com/Sai_15"
+                               target="_blank">
+                                github.com/Sai_15
+                            </a>
+                        </div>
+
+                            
+
+                            
+
+                        </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="container">
+
+            © 2026 Sai Deva Harsha — Aspiring Web Developer
+
+        </div>
+
+    </footer>
+
+
+</body>
+</html>
